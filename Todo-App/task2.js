@@ -41,8 +41,7 @@ button.addEventListener('click', () => {
 
   // Create delete button and icon
   const button = document.createElement('button');
-  button.id = 'deleteBtn';
-  const deleteBtn = document.getElementById('deleteBtn');
+  button.id = 'deleteBtn'; 
   const deleteIcon = document.createElement('i');
 
 // Add classes and styles to the delete icon
@@ -72,7 +71,28 @@ button.addEventListener('click', () => {
   listArray.push(inputText);
   console.log(listArray);
 
+  // Add event listener to the checkbox to toggle the "completed" class on the new list item when clicked
+
+  checkbox.addEventListener("click", () => {
+    newList.classList.toggle("completed")
+  })
+
   updateTaskCount();
+
+  // Delete Task
+
+button.addEventListener('click', () => {
+  newList.remove();
+
+  const index = listArray.indexOf(inputText);
+  if (index > -1) {
+    listArray.splice(index, 1);
+  }
+  updateTaskCount();
+});
+  
+
+  
 });
 
 // Function to update task count
@@ -82,8 +102,4 @@ const updateTaskCount = () => {
   taskNumber.style.color = 'blueviolet';
 };
 
-// Delete Task
 
-deleteBtn.addEventListener('click', () => {
-  newList.remove();
-});
