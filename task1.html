@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="h1">Welcome to my page</h1>
+  <p class="details">This is the first paragraph</p>
+  <p class="details">This is the second paragraph</p>
+  <button class="Cta">Click me</button>
+</body>
+<script>
+  const headings = document.getElementById("h1");
+  console.log(headings);
+  const paragraph = document.getElementsByClassName("details");
+for(let i = 0; i < paragraph.length; i++){
+  console.log(paragraph[i])
+}
+  const button = document.querySelector(".Cta")
+  console.log(button);
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+     headings.textContent = "Hello world!!"
+  })
+
+  button.addEventListener("click", ()=>{
+      const newParagraph= document.createElement("p");
+    newParagraph.textContent = "This is the third paragraph";
+    document.body.appendChild(newParagraph)
+  })
+
+
+</script>
+</html>

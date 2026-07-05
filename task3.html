@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation</title>
+
+<!-- Internal CSS Styles -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 0 1em;
+    }
+
+    #outer {
+      max-width: 500px;
+      width: 100%;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-color: blueviolet;
+      text-align: center;
+      padding: 1em;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+        0 -4px 8px rgba(0, 0, 0, 0.2);
+
+    }
+
+    #middle {
+      max-width: 500px;
+      width: 100%;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-color: rgb(181, 122, 236);
+      text-align: center;
+      padding: 1em;
+      margin-top: 1em;
+    }
+
+    #inner {
+      max-width: 500px;
+      width: 100%;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-color: rgb(216, 184, 247);
+      text-align: center;
+      padding: 1em;
+      margin-top: 1em;
+    }
+
+    #clickBtn {
+      background-color: blueviolet;
+      padding: 0.8em;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+
+<!-- Body Container -->
+
+<body>
+  <h1>Event Propagation</h1>
+  <div id="outer">
+    Outer
+    <div id="middle">
+      Middle
+      <div id="inner">Inner
+        <button id="clickBtn">Click Me</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Code -->
+
+  <script>
+
+  //  Accessing the elements from the DOM
+
+    const outerDiv = document.getElementById("outer");
+    const MiddleDiv = document.getElementById("middle");
+    const InnerDiv = document.getElementById("inner");
+    const button = document.getElementById("clickBtn");
+
+// Adding Event Listeners 
+
+    outerDiv.addEventListener("click", () => {
+      console.log("Outer div was clicked");
+    });
+    MiddleDiv.addEventListener("click", () => {
+      console.log("Middle div was clicked");
+    });
+    InnerDiv.addEventListener("click", () => {
+      console.log("Inner div was clicked");
+    });
+    
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      console.log("Bubbling Stopped")
+    })
+  </script>
+</body>
+
+</html>
